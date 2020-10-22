@@ -31,7 +31,8 @@ public class PositionalNotation {
 		BigInteger remaining = input;
 		final BigInteger charSetSize = BigInteger.valueOf(charSet.size());
 		while (true) {
-			result = charSet.get(remaining.mod(charSetSize).intValue()) + result;
+			final Integer index = remaining.mod(charSetSize).intValue();
+			result = charSet.get(index) + result;
 			remaining = remaining.divide(charSetSize);
 			if (remaining.compareTo(BigInteger.ZERO) <= 0) {
 				break;

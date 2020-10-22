@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Ansammlung kryptografischer Hilfsmethoden.
@@ -55,6 +56,48 @@ public class CryptoUtil {
 		}
 		
 		return fastExponentiation(tempResults, modul);
+	}
+	
+	public static final BigInteger gcd(final BigInteger a, final BigInteger b) {
+		BigInteger aClone = a;
+		BigInteger bClone = b;
+		while (!bClone.equals(BigInteger.ZERO)) {
+			final BigInteger rest = aClone.mod(bClone);
+			aClone = bClone;
+			bClone = rest;
+		}
+		return aClone;
+	}
+	
+	public static final BigInteger computeMultiplicativeInverse(
+			final BigInteger a, 
+			final BigInteger modul) throws Exception {
+		
+		// Determine gcd
+		final Stack<GCDStep> steps = new Stack<>();
+		BigInteger aClone = a;
+		BigInteger bClone = modul;
+		while (!bClone.equals(BigInteger.ZERO)) {
+			final BigInteger rest = aClone.mod(bClone);
+			final BigInteger quot = aClone.divide(bClone);
+			final GCDStep step = new GCDStep(aClone, bClone, quot, rest);
+			steps.push(step);
+			System.out.println(step);
+			aClone = bClone;
+			bClone = rest;
+		}
+		
+		if (!aClone.equals(BigInteger.ONE)) {
+			throw new Exception("The gcd does not equals 1 - multiplicative inverse not found");
+		}
+		
+		// Pop last calculation
+		steps.pop();
+		
+		// TODO!!
+		
+		return aClone;
+		
 	}
 	
 	private static final BigInteger fastExponentiation(
