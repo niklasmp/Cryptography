@@ -6,6 +6,9 @@ public abstract class Exercise {
 	
 	protected final boolean debug;
 
+	/**
+	 * Erzeugt ein neues {@link Exercise}-Objekt.
+	 */
 	protected Exercise(
 			final String title,
 			final boolean debug) {

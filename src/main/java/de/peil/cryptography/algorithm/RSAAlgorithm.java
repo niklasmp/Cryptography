@@ -26,7 +26,7 @@ public class RSAAlgorithm {
 	private final BigInteger d;
 	
 	/**
-	 * Konstruktor.
+	 * Erzeugt ein neues {@link RSAAlgorithm}-Objekt.
 	 */
 	public RSAAlgorithm(
 			final BigInteger n,

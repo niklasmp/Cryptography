@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class BinaryNotation extends PositionalNotation {
 
 	/**
-	 * Konstruktor.
+	 * Erzeugt ein neues {@link BinaryNotation}-Objekt.
 	 */
 	public BinaryNotation() {
 		super(Arrays.asList('0', '1'));

@@ -19,6 +19,9 @@ public final class ShanksAlgorithm {
 	private BigInteger b;
 	private BigInteger p;
 
+	/**
+	 * Erzeugt ein neues {@link ShanksAlgorithm}-Objekt.
+	 */
 	public ShanksAlgorithm(
 			final BigInteger g,
 			final BigInteger b,

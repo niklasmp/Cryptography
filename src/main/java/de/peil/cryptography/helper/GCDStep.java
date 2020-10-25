@@ -10,7 +10,7 @@ public final class GCDStep {
 	private BigInteger rest;
 
 	/**
-	 * Konstruktor.
+	 * Erzeugt ein neues {@link GCDStep}-Objekt.
 	 */
 	public GCDStep(
 			final BigInteger a, 

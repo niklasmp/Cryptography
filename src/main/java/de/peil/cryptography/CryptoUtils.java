@@ -16,7 +16,7 @@ import de.peil.cryptography.notations.BinaryNotation;
 public class CryptoUtils {
 
 	/**
-	 * Konstruktor.
+	 * Erzeugt ein neues {@link CryptoUtils}-Objekt.
 	 */
 	private CryptoUtils() {
 	}

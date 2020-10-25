@@ -11,7 +11,7 @@ public class PositionalNotation {
 	private final List<Character> charSet;
 	
 	/**
-	 * Konstruktor.
+	 * Erzeugt ein neues {@link PositionalNotation}-Objekt.
 	 */
 	public PositionalNotation(final List<Character> charSet) {
 		this.charSet = charSet;

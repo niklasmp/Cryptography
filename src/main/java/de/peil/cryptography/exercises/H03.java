@@ -6,6 +6,9 @@ import de.peil.cryptography.CryptoUtils;
 
 public class H03 extends Exercise {
 
+	/**
+	 * Erzeugt ein neues {@link H03}-Objekt.
+	 */
 	public H03(final boolean debug) {
 		super("H03", debug);
 	}

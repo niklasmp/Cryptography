@@ -8,6 +8,9 @@ import de.peil.cryptography.notations.PositionalNotation;
 
 public class H08 extends Exercise {
 
+	/**
+	 * Erzeugt ein neues {@link H08}-Objekt.
+	 */
 	public H08(final boolean debug) {
 		super("H08", debug);
 	}

@@ -15,7 +15,7 @@ public class H13CompressFunction extends CompressFunction {
 	private int p;
 
 	/**
-	 * Konstruktor.
+	 * Erzeugt ein neues {@link H13CompressFunction}-Objekt.
 	 */
 	public H13CompressFunction(
 			final int m, 
@@ -30,8 +30,7 @@ public class H13CompressFunction extends CompressFunction {
 	}
 
 	@Override
-	public String compute(final String input) {
-		assert input.length() == this.m;
+	protected String compress(final String input) {
 		final int mid = input.length() / 2;
 		final String[] parts = { input.substring(0, mid), input.substring(mid)};
 		
@@ -49,9 +48,6 @@ public class H13CompressFunction extends CompressFunction {
 				rAsBinary = rAsBinary + "1";
 			}
 		}
-		
-		assert rAsBinary.length() == this.n;
-		
 		return rAsBinary;
 	}
 	

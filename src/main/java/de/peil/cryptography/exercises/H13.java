@@ -5,6 +5,9 @@ import de.peil.cryptography.compression.H13CompressFunction;
 
 public class H13 extends Exercise {
 
+	/**
+	 * Erzeugt ein neues {@link H13}-Objekt.
+	 */
 	public H13(final boolean debug) {
 		super("H13", debug);
 	}

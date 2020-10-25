@@ -11,7 +11,7 @@ public final class MerkleMetaAlgorithm {
 	private final boolean debug;
 
 	/**
-	 * Konstruktor.
+	 * Erzeugt ein neues {@link MerkleMetaAlgorithm}-Objekt.
 	 */
 	public MerkleMetaAlgorithm(
 			final CompressFunction compressFunction,

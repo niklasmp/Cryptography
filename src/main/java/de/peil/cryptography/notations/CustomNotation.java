@@ -52,6 +52,9 @@ public final class CustomNotation extends PositionalNotation {
 		CHARSET.add('*');
 	}
 
+	/**
+	 * Erzeugt ein neues {@link CustomNotation}-Objekt.
+	 */
 	public CustomNotation() {
 		super(CHARSET);
 	}

@@ -24,7 +24,7 @@ public class UpperCaseNotation extends PositionalNotation {
 	}
 
 	/**
-	 * Konstruktor.
+	 * Erzeugt ein neues {@link UpperCaseNotation}-Objekt.
 	 */
 	public UpperCaseNotation() {
 		super(CHARSET);
