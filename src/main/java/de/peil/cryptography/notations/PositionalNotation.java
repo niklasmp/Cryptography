@@ -1,4 +1,4 @@
-package de.peil.cryptography;
+package de.peil.cryptography.notations;
 
 import java.math.BigInteger;
 import java.util.List;

@@ -1,17 +1,17 @@
-package de.peil.cryptography;
+package de.peil.cryptography.algorithm;
 
 import java.math.BigInteger;
 import java.math.RoundingMode;
-import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import org.javatuples.Pair;
-
 import com.google.common.math.BigIntegerMath;
+
+import de.peil.cryptography.CryptoUtils;
+import de.peil.cryptography.helper.Pair;
 
 public final class ShanksAlgorithm {
 	
@@ -31,15 +31,15 @@ public final class ShanksAlgorithm {
 	public BigInteger execute(final boolean debug) {
 		final BigInteger decrementedP = p.subtract(BigInteger.ONE);
 		final BigInteger m = BigIntegerMath.sqrt(decrementedP, RoundingMode.CEILING);
-		final BigInteger s = CryptoUtil.fastExponentiation(this.g, m, this.p);
+		final BigInteger s = CryptoUtils.fastExponentiation(this.g, m, this.p);
 		
 		final Map<Integer, BigInteger> giantSteps = new LinkedHashMap<>();
 		final Map<Integer, BigInteger> babySteps = new LinkedHashMap<>();
 		for (int j = 0; j < m.intValue(); j++) {
-			final BigInteger giantStep = CryptoUtil.fastExponentiation(s, BigInteger.valueOf(j), this.p);
+			final BigInteger giantStep = CryptoUtils.fastExponentiation(s, BigInteger.valueOf(j), this.p);
 
 			final BigInteger exponent = decrementedP.subtract(BigInteger.valueOf(j));
-			final BigInteger babyStep = CryptoUtil.fastExponentiation(this.g, exponent, this.p).multiply(this.b).mod(this.p);
+			final BigInteger babyStep = CryptoUtils.fastExponentiation(this.g, exponent, this.p).multiply(this.b).mod(this.p);
 			
 			giantSteps.put(j, giantStep);
 			babySteps.put(j, babyStep);
@@ -47,12 +47,12 @@ public final class ShanksAlgorithm {
 		
 		final Pair<Integer, Integer> match = findMatchingValue(giantSteps, babySteps);
 		
-		final BigInteger exponent = (m.multiply(BigInteger.valueOf(match.getValue0()))).add(BigInteger.valueOf(match.getValue1()));
+		final BigInteger exponent = (m.multiply(BigInteger.valueOf(match.getFirst()))).add(BigInteger.valueOf(match.getSecond()));
 		
 		if (debug) {
 			print("Giantsteps", giantSteps);
+			System.out.println();
 			print("Babysteps", babySteps);
-			System.out.println("exponent: " + exponent.toString());
 		}
 		
 		return exponent;
@@ -97,7 +97,6 @@ public final class ShanksAlgorithm {
 		for (final Entry<Integer, BigInteger> entry : steps.entrySet()) {
 			System.out.println(String.format("(%d, %s)", entry.getKey(), entry.getValue().toString()));
 		}
-		System.out.println();
 	}
 
 }

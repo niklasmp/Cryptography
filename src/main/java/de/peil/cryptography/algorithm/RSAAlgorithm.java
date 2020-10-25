@@ -1,6 +1,9 @@
-package de.peil.cryptography;
+package de.peil.cryptography.algorithm;
 
 import java.math.BigInteger;
+
+import de.peil.cryptography.CryptoUtils;
+import de.peil.cryptography.notations.PositionalNotation;
 
 /**
  * Die Implementierung des RSA-Algorithmus.
@@ -59,7 +62,7 @@ public class RSAAlgorithm {
 		String result = "";
 		for (String block : blocks) {
 			final BigInteger mBlock = charSet.parse(block);			
-			final BigInteger cBlock = CryptoUtil.fastExponentiation(
+			final BigInteger cBlock = CryptoUtils.fastExponentiation(
 					mBlock, 
 					BigInteger.valueOf(this.e), 
 					this.n);
@@ -94,7 +97,7 @@ public class RSAAlgorithm {
 		String result = "";
 		for (String block : blocks) {
 			final BigInteger cBlock = charSet.parse(block);			
-			final BigInteger mBlock = CryptoUtil.fastExponentiation(
+			final BigInteger mBlock = CryptoUtils.fastExponentiation(
 					cBlock, 
 					this.d, 
 					this.n);

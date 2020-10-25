@@ -1,4 +1,4 @@
-package de.peil.cryptography;
+package de.peil.cryptography.compression;
 
 public abstract class CompressFunction {
 	
@@ -12,5 +12,13 @@ public abstract class CompressFunction {
 		this.n = n;
 	}
 
-	protected abstract String compute(String preparedInput);
+	public abstract String compute(String preparedInput);
+
+	public int getM() {
+		return m;
+	}
+
+	public int getN() {
+		return n;
+	}
 }

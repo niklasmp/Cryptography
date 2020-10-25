@@ -1,8 +1,8 @@
-package de.peil.cryptography;
+package de.peil.cryptography.helper;
 
 import java.math.BigInteger;
 
-final class GCDStep {
+public final class GCDStep {
 	
 	private BigInteger a;
 	private BigInteger b;

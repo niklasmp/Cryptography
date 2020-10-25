@@ -8,9 +8,7 @@ repositories {
 }
 
 dependencies {
-    compile("com.google.guava:guava:29.0-jre")
-    compile("org.javatuples:javatuples:1.2")
-    
+    compile("com.google.guava:guava:30.0-jre")
 }
 
 test {

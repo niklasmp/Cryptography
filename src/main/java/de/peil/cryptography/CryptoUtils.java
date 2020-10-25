@@ -7,15 +7,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
+import de.peil.cryptography.helper.GCDStep;
+import de.peil.cryptography.notations.BinaryNotation;
+
 /**
  * Ansammlung kryptografischer Hilfsmethoden.
  */
-public class CryptoUtil {
+public class CryptoUtils {
 
 	/**
 	 * Konstruktor.
 	 */
-	private CryptoUtil() {
+	private CryptoUtils() {
 	}
 	
 	/**
@@ -69,9 +72,13 @@ public class CryptoUtil {
 		return aClone;
 	}
 	
+	/**
+	 * TODO: Algorithmus vervollständigen.
+	 */
 	public static final BigInteger computeMultiplicativeInverse(
 			final BigInteger a, 
-			final BigInteger modul) throws Exception {
+			final BigInteger modul,
+			final boolean debug) throws Exception {
 		
 		// Determine gcd
 		final Stack<GCDStep> steps = new Stack<>();
@@ -82,7 +89,9 @@ public class CryptoUtil {
 			final BigInteger quot = aClone.divide(bClone);
 			final GCDStep step = new GCDStep(aClone, bClone, quot, rest);
 			steps.push(step);
-			System.out.println(step);
+			if (debug) {
+				System.out.println(step);
+			}
 			aClone = bClone;
 			bClone = rest;
 		}
@@ -93,8 +102,6 @@ public class CryptoUtil {
 		
 		// Pop last calculation
 		steps.pop();
-		
-		// TODO!!
 		
 		return aClone;
 		

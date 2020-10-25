@@ -1,6 +1,10 @@
-package de.peil.cryptography;
+package de.peil.cryptography.compression;
 
 import java.math.BigInteger;
+
+import de.peil.cryptography.CryptoUtils;
+import de.peil.cryptography.notations.BinaryNotation;
+import de.peil.cryptography.notations.PositionalNotation;
 
 public class H13CompressFunction extends CompressFunction {
 	
@@ -25,10 +29,8 @@ public class H13CompressFunction extends CompressFunction {
 		this.p = p;
 	}
 
-
-
 	@Override
-	protected String compute(final String input) {
+	public String compute(final String input) {
 		assert input.length() == this.m;
 		final int mid = input.length() / 2;
 		final String[] parts = { input.substring(0, mid), input.substring(mid)};
@@ -53,15 +55,13 @@ public class H13CompressFunction extends CompressFunction {
 		return rAsBinary;
 	}
 	
-
-	
 	private final BigInteger f(int x1, int x2) {
 		final BigInteger pAsBigInteger = BigInteger.valueOf(this.p);
-		final BigInteger r1 = CryptoUtil.fastExponentiation(
+		final BigInteger r1 = CryptoUtils.fastExponentiation(
 				BigInteger.valueOf(this.a), 
 				BigInteger.valueOf(x1),
 				pAsBigInteger);
-		final BigInteger r2 = CryptoUtil.fastExponentiation(
+		final BigInteger r2 = CryptoUtils.fastExponentiation(
 				BigInteger.valueOf(this.b), 
 				BigInteger.valueOf(x2),
 				pAsBigInteger);

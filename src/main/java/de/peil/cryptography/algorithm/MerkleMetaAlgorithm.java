@@ -1,6 +1,9 @@
-package de.peil.cryptography;
+package de.peil.cryptography.algorithm;
 
 import java.math.BigInteger;
+
+import de.peil.cryptography.compression.CompressFunction;
+import de.peil.cryptography.notations.BinaryNotation;
 
 public final class MerkleMetaAlgorithm {
 	
@@ -20,10 +23,10 @@ public final class MerkleMetaAlgorithm {
 	public String compute(final String input) {
 		final String preparedInput = this.prepare(input);
 		
-		final int r = this.compressFunction.m - this.compressFunction.n;
-		final String zeroString = getZeroString(this.compressFunction.n);
+		final int r = this.compressFunction.getM() - this.compressFunction.getN();
+		final String zeroString = getZeroString(this.compressFunction.getN());
 		final String totalInput = zeroString + preparedInput;
-		final String firstInput = totalInput.substring(0, this.compressFunction.n + r);
+		final String firstInput = totalInput.substring(0, this.compressFunction.getN() + r);
 		String result = this.compressFunction.compute(firstInput);
 		
 		int startIndex = r;
@@ -34,12 +37,12 @@ public final class MerkleMetaAlgorithm {
 		}
 		
 		assert startIndex == preparedInput.length();
-		assert result.length() == this.compressFunction.n;
+		assert result.length() == this.compressFunction.getN();
 		return result;
 	}
 	
 	private String prepare(final String inputAsBinary) {
-		final int r = this.compressFunction.m - this.compressFunction.n;
+		final int r = this.compressFunction.getM() - this.compressFunction.getN();
 		String x = inputAsBinary;
 		
 		// Schritt 1:
@@ -77,7 +80,6 @@ public final class MerkleMetaAlgorithm {
 		// Schritt 5:
 		final String result = x + lengthAsBinary;
 		print(5, result, r);
-		
 		return result;
 		
 	}
