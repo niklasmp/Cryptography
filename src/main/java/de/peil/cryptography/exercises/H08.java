@@ -26,7 +26,7 @@ public class H08 extends Exercise {
 		final RSAAlgorithm algo = new RSAAlgorithm(n, e, d);
 		final String mOrig = "ALLE*LIEBEN*KRYPTOGRAPHIE";
 		
-		final String c = algo.encrypt(mOrig, 5, 6, charSet);
+		final String c = algo.encrypt(mOrig, 5, 6, charSet, this.debug);
 		assert algo.decrypt(c, 5, 6, charSet).equals(mOrig);
 		return c;
 	}

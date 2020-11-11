@@ -5,6 +5,7 @@ import de.peil.cryptography.exercises.H03;
 import de.peil.cryptography.exercises.H08;
 import de.peil.cryptography.exercises.H10;
 import de.peil.cryptography.exercises.H13;
+import de.peil.cryptography.exercises.H19;
 
 public class Starter {
 
@@ -16,11 +17,13 @@ public class Starter {
 		
 		new H03(debug).compute();
 		
-		new H08(debug).compute();
+		new H08(debug).compute(); 
 		
 		new H10(debug).compute();
 		
 		new H13(debug).compute();
+		
+		new H19(debug).compute();
 	}
 
 }

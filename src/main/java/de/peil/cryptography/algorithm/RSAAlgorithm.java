@@ -57,11 +57,15 @@ public class RSAAlgorithm {
 			final String m, 
 			final int k, 
 			final int l,
-			final PositionalNotation charSet) {
+			final PositionalNotation charSet, 
+			final boolean debug) {
 		final String[] blocks = m.split(String.format("(?<=\\G.{%d})", k));
 		String result = "";
 		for (String block : blocks) {
-			final BigInteger mBlock = charSet.parse(block);			
+			final BigInteger mBlock = charSet.parse(block);	
+			if (debug) {
+				System.out.println(mBlock.toString());
+			}
 			final BigInteger cBlock = CryptoUtils.fastExponentiation(
 					mBlock, 
 					BigInteger.valueOf(this.e), 
